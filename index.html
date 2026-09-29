@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulta de Placas</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+background:#0F172A;
+font-family:Arial,Helvetica,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:#fff;
+}
+.card{
+width:340px;
+background:#1E293B;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+h1{
+text-align:center;
+margin-bottom:18px;
+font-size:24px;
+}
+input{
+width:100%;
+padding:14px;
+font-size:18px;
+border:none;
+border-radius:10px;
+text-transform:uppercase;
+margin-bottom:12px;
+}
+button{
+width:100%;
+padding:14px;
+background:#2563EB;
+color:#fff;
+font-size:17px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+button:hover{background:#1D4ED8}
+#resultado{
+margin-top:18px;
+line-height:28px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>🚗 Consulta Placa</h1>
+
+<input id="placa" placeholder="ABC1D23" maxlength="7">
+
+<button onclick="consultar()">Consultar</button>
+
+<div id="resultado"></div>
+</div>
+
+<script>
+function consultar(){
+
+const placa=document.getElementById("placa").value.toUpperCase();
+
+if(placa.length!==7){
+alert("Digite uma placa válida");
+return;
+}
+
+document.getElementById("resultado").innerHTML=
+`<b>Placa:</b> ${placa}<br>
+<b>Status:</b> Site funcionando ✅<br>
+<b>API:</b> Será conectada na próxima etapa`;
+}
+</script>
+
+</body>
+</html>
