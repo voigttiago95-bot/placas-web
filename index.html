@@ -68,7 +68,35 @@ line-height:28px;
 </div>
 
 <script>
-function consultar(){
+async function consultar(){
+
+const placa=document.getElementById("placa").value.toUpperCase();
+
+if(placa.length!==7){
+  alert("Digite uma placa válida");
+  return;
+}
+
+document.getElementById("resultado").innerHTML="Consultando...";
+
+const r = await fetch("/api/placa?placa="+placa);
+const d = await r.json();
+
+if(d.erro){
+  document.getElementById("resultado").innerHTML=d.erro;
+  return;
+}
+
+document.getElementById("resultado").innerHTML=`
+<b>Marca:</b> ${d.marca}<br>
+<b>Modelo:</b> ${d.modelo}<br>
+<b>Cor:</b> ${d.cor}<br>
+<b>Ano:</b> ${d.ano}/${d.anoModelo}<br>
+<b>Cidade:</b> ${d.municipio}/${d.uf}<br>
+<b>Situação:</b> ${d.situacao}
+`;
+
+}
 
 const placa=document.getElementById("placa").value.toUpperCase();
 
